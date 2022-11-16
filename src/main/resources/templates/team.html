@@ -1,0 +1,39 @@
+<! DOCTYPE HTML>
+<html xmlnsth="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Team</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div align="center" class ="container" style="padding:20px 0">
+<form th:action="@{/logout}" method="post">
+<input type="submit" value="Kirjaudu ulos" class="btn btn-sm btn-danger"/>
+</form>
+
+
+<table>
+<tr th:each = "team : ${teams}">
+<h2 th:text= "${team.name}"> </h1>
+
+
+<tr>
+	<th>Pelaaja</th>
+	<th>Syntymävuosi</th>
+	<th>Rooli</th>
+	</tr>
+<tr th:each = "player : ${players}">
+<td th:text= "${player.firstName + ' ' + player.lastName}"></td>
+<td th:text= "${player.birthYear}"></td>
+<td th:text= "${player.role}"></td>
+
+
+	</tr>
+</table>
+<a href="/teamlist" class="btn btn-primary">Joukkueet</a>
+</body>
+
+
+
+
+</html>

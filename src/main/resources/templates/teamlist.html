@@ -1,0 +1,39 @@
+<! DOCTYPE HTML>
+<html xmlnsth="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Team list</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div align="center" class ="container" style="padding:20px 0">
+<form th:action="@{/logout}" method="post">
+<input type="submit" value="Kirjaudu ulos" class="btn btn-sm btn-danger"/>
+</form>
+<h1>Joukkueet</h1>
+<table class="table table-striped">
+<tr>
+	<th>Joukkue</th>
+	<th>Kaupunki</th>
+	<th>Perustamisvuosi</th>
+	<th sec:authorize="hasAuthority('ADMIN')"> </th>
+	</tr>
+<tbody>
+	<tr th:each = "team : ${teams}">
+	<td><a th:href="@{/team/{id}(id=${team.id})}" th:text="${team.name}"></a></td>
+	
+		<td th:text="${team.city}"></td>
+		<td th:text="${team.year}"></td>
+		<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${team.id})}" class="btn btn-xs btn-danger">Poista joukkue</a></td>
+		</tr>
+		</tbody>
+</table>
+<a sec:authorize="hasAuthority('ADMIN')" href="add" class="btn btn-primary">Lisää joukkue</a>
+<a href="playerlist" class="btn btn-primary">Kaikki pelaajat</a>
+
+</body>
+
+
+
+
+</html>

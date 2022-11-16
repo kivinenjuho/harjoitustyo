@@ -1,0 +1,38 @@
+<! DOCTYPE HTML>
+<html xmlnsth="http://www.thymeleaf.org">
+<head>
+	<title>Team list</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div align="center" class ="container">
+<h1>Lisää joukkue</h1>
+<div class="col-md-4">
+<form th:object="${team}" th:action="@{save}" action="#" method="post">
+
+<label for="name">Joukkueen nimi</label>
+<input type="text" id="name" th:field="*{name}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+
+<label for="city">Joukkueen kotikaupunki</label>
+<input type="text" id="city" th:field="*{city}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+
+<label for="year">Joukkueen perustamisvuosi</label>
+<input type="text" id="year" th:field="*{year}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+
+<input type="submit" class="btn btn-primary" value="Tallenna"></input>
+<a href="teamlist" class="btn btn-la btn-danger">Takaisin</a>
+
+
+</form>
+</div>
+</div>
+</body>
+
+
+
+
+</html>

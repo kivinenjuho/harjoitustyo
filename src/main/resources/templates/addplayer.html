@@ -1,0 +1,47 @@
+<! DOCTYPE HTML>
+<html xmlnsth="http://www.thymeleaf.org">
+<head>
+	<title>Player List</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div align="center" class ="container">
+<h1>Lisää pelaaja</h1>
+<div class="col-md-4">
+<form th:object="${player}" th:action="@{saveplayer}" action="#" method="post">
+
+<label for="name">Etunimi</label>
+<input type="text" id="firstName" th:field="*{firstName}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+
+<label for="city">Sukunimi</label>
+<input type="text" id="lastName" th:field="*{lastName}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+
+<label for="city">Rooli</label>
+<input type="text" id="role" th:field="*{role}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+
+<label for="year">Syntymävuosi</label>
+<input type="text" id="birthYear" th:field="*{birthYear}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+
+<div style="clear: both; display: block; height: 10px;"></div>
+<label for="teamlist">Joukkue</label>
+<select id="teamlist" th:field="*{team}" class="form-control">
+<option th:each="team: ${teams}" th:value="${team.id}" th:text="${team.name}"></option>
+</select>
+
+<input type="submit" class="btn btn-primary" value="Tallenna"></input>
+<a href="playerlist" class="btn btn-la btn-danger">Takaisin</a>
+
+
+</form>
+</div>
+</div>
+</body>
+
+
+
+</html>
